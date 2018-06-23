@@ -1,0 +1,12 @@
+{
+  "python.linting.pylintEnabled": false,
+  "files.trimTrailingWhitespace": true,
+  // These are all my auto-save configs
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  // This section settings python code
+  "python.formatting.provider": "autopep8",
+  "prettier.singleQuote": true,
+  "python.pythonPath": "${workspaceFolder}/env/bin/python"
+}
