@@ -54,3 +54,21 @@ class EditTask(graphene.Mutation):
         except BaseException as err:
             db_session.rollback()
             raise GraphQLError("Error edit Task... {}".format(err))
+
+
+class DeleteTask(graphene.Mutation):
+    class Arguments:
+        task_id = graphene.Int()
+    status = graphene.Boolean()
+    task = graphene.Field(Task)
+
+    @staticmethod
+    def mutate(root, info, task_id):
+        task = TaskModel.query.filter_by(task_id=task_id).first()
+        print(task.task_id)
+        if task != None:
+            db_session.delete(task)
+            db_session.commit()
+            return DeleteTask(task=task, status=True)
+        else:
+            return DeleteTask(task=None, status=False)

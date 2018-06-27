@@ -6,7 +6,7 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField, SQLAlchemyObjectType
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.dialects.postgresql import insert
 
-from mutations.mutations import CreateTask, EditTask
+from mutations.mutations import CreateTask, EditTask, DeleteTask
 from objtypes.types import(Task, TaskModel)
 
 
@@ -29,6 +29,7 @@ class Query(graphene.ObjectType):
 class TasksMutations(graphene.ObjectType):
     create_task = CreateTask.Field()
     edit_task = EditTask.Field()
+    delete_task = DeleteTask.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=TasksMutations, types=[
